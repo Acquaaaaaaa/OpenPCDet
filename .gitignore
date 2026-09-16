@@ -3,12 +3,11 @@
 **egg-info**
 **dist**
 data/
+checkpoints/
 *.pyc
 venv/
 *.idea/
 *.so
-*.yaml
-*.sh
 *.pth
 *.pkl
 *.zip
