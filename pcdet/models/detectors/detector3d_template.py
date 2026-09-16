@@ -11,6 +11,16 @@ from ..backbones_3d import pfe, vfe
 from ..model_utils import model_nms_utils
 
 
+def _load_checkpoint(filename, map_location=None):
+    safe_types = [
+        np.core.multiarray.scalar,
+        np.dtype,
+        type(np.dtype(np.float64)),
+    ]
+    with torch.serialization.safe_globals(safe_types):
+        return torch.load(filename, map_location=map_location, weights_only=True)
+
+
 class Detector3DTemplate(nn.Module):
     def __init__(self, model_cfg, num_class, dataset):
         super().__init__()
@@ -364,10 +374,10 @@ class Detector3DTemplate(nn.Module):
 
         logger.info('==> Loading parameters from checkpoint %s to %s' % (filename, 'CPU' if to_cpu else 'GPU'))
         loc_type = torch.device('cpu') if to_cpu else None
-        checkpoint = torch.load(filename, map_location=loc_type)
+        checkpoint = _load_checkpoint(filename, map_location=loc_type)
         model_state_disk = checkpoint['model_state']
         if not pre_trained_path is None:
-            pretrain_checkpoint = torch.load(pre_trained_path, map_location=loc_type)
+            pretrain_checkpoint = _load_checkpoint(pre_trained_path, map_location=loc_type)
             pretrain_model_state_disk = pretrain_checkpoint['model_state']
             model_state_disk.update(pretrain_model_state_disk)
             
@@ -389,7 +399,7 @@ class Detector3DTemplate(nn.Module):
 
         logger.info('==> Loading parameters from checkpoint %s to %s' % (filename, 'CPU' if to_cpu else 'GPU'))
         loc_type = torch.device('cpu') if to_cpu else None
-        checkpoint = torch.load(filename, map_location=loc_type)
+        checkpoint = _load_checkpoint(filename, map_location=loc_type)
         epoch = checkpoint.get('epoch', -1)
         it = checkpoint.get('it', 0.0)
 
@@ -405,7 +415,7 @@ class Detector3DTemplate(nn.Module):
                 src_file, ext = filename[:-4], filename[-3:]
                 optimizer_filename = '%s_optim.%s' % (src_file, ext)
                 if os.path.exists(optimizer_filename):
-                    optimizer_ckpt = torch.load(optimizer_filename, map_location=loc_type)
+                    optimizer_ckpt = _load_checkpoint(optimizer_filename, map_location=loc_type)
                     optimizer.load_state_dict(optimizer_ckpt['optimizer_state'])
 
         if 'version' in checkpoint:
