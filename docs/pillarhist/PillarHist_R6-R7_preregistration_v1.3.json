@@ -1,0 +1,54 @@
+{
+  "schema_version": "pillarhist-r6-r7-preregistration-v1",
+  "status": "FROZEN_BEFORE_FORMAL_RESULTS",
+  "frozen_utc": "2026-09-17T06:20:00Z",
+  "baseline": {
+    "repository": "/home/ksyang/OpenPCDet",
+    "branch": "pointpillars-pillarhist",
+    "commit": "e90de060bceba2a228095eea01718b4ded55b68b",
+    "r0_r5_acceptance_run": "20260917T012049Z_seed666"
+  },
+  "documents": [
+    {
+      "path": "PillarHist_OpenPCDet_deployment_guideline_v1.3.md",
+      "sha256": "3120b02f6564290df7e0879e9883d59b6a560baea73fb9723e8f0d6e8abf7094",
+      "role": "authoritative R6-R7 specification"
+    },
+    {
+      "path": "PillarHist_R6-R7_closure_task_plan.md",
+      "sha256": "842c8a7f54b555ac9370a8996dd0cf46566492dd060ebc1e5d2813ba102a2cc5",
+      "role": "closure execution plan"
+    },
+    {
+      "path": "PillarHist_R7_validation_subset_v1.3.json",
+      "sha256": "92d3e3cb3c4154a236c2e9b2e7845c423a59fed6cf63c09dec4bf26df235adb8",
+      "role": "frozen 256-frame validation subset"
+    }
+  ],
+  "formal_result_policy": {
+    "formal_r6_profile_allowed_after_frozen_utc": true,
+    "formal_r7_training_allowed_only_after_r6_non_blocking_decision": true,
+    "post_result_threshold_edits_forbidden": true,
+    "amendments_require_new_spec_version_and_new_preregistration": true
+  },
+  "r6_frozen_summary": {
+    "correctness": "same complete state/mode/input; Hp and rows exact; Hi/features/loss rtol=1e-5 atol=1e-6; gradients rtol=1e-4 atol=1e-6; cosine>=0.9999 when both norms>1e-8",
+    "repeatability": "20 repeats for non-fixed reduction, including loss and representative gradients with state restoration",
+    "benchmark": "CUDA Event, sync, warmup 30, VFE 200 and E2E 100 per round, 5 interleaved rounds",
+    "promotion": "VFE p50 >=10%, positive in >=4/5 rounds, E2E paired 95% CI lower bound >0, peak memory increase <=10% unless justified"
+  },
+  "r7_frozen_summary": {
+    "tracks": 5,
+    "candidate_tracks": 4,
+    "control": "PP_SHORT_CONTROL",
+    "primary_seed": 666,
+    "tie_seed": 667,
+    "optimizer_steps": 5000,
+    "batch_size": 2,
+    "workers": 0,
+    "amp": false,
+    "validation_subset_frame_ids_sha256": "2217461dbcda24e92a69980c5db2815c2a1b81b81c7509bea1d0a81c47d0bcdd",
+    "primary_metric": "full KITTI validation three-class macro 3D AP_R40 Moderate",
+    "tie_margin_absolute_ap": 1.0
+  }
+}

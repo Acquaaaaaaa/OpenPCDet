@@ -196,7 +196,10 @@ class PillarHistVFE(VFETemplate):
             'INTENSITY_MODE': (self.intensity_mode, {'mean_raw'}),
             'COORD_MODE': (self.coord_mode, {'raw_meter_xy', 'normalized_xy'}),
             'HISTOGRAM_DTYPE': (self.histogram_dtype, {'float32'}),
-            'REDUCTION_MODE': (self.reduction_mode, {'deterministic_segment'}),
+            'REDUCTION_MODE': (
+                self.reduction_mode,
+                {'deterministic_segment', 'compact_lookup_segment'},
+            ),
         }
         for name, (value, allowed) in expected.items():
             if value not in allowed:
@@ -315,21 +318,41 @@ class PillarHistVFE(VFETemplate):
                 raise RuntimeError('valid ROI points produced out-of-range indices')
 
             point_key = roi_batch * (self.ny * self.nx) + cy * self.nx + cx
-            sorted_key, permutation = torch.sort(active_key, stable=True)
-            positions = torch.searchsorted(sorted_key, point_key)
-            safe_positions = positions.clamp(max=num_voxels - 1)
-            admitted = (positions < num_voxels) & (
-                sorted_key[safe_positions] == point_key
-            )
+            if self.reduction_mode == 'deterministic_segment':
+                sorted_key, permutation = torch.sort(active_key, stable=True)
+                positions = torch.searchsorted(sorted_key, point_key)
+                safe_positions = positions.clamp(max=num_voxels - 1)
+                admitted = (positions < num_voxels) & (
+                    sorted_key[safe_positions] == point_key
+                )
+                rows = permutation[safe_positions[admitted]]
+            else:
+                row_lookup = torch.full(
+                    (batch_size * self.ny * self.nx,),
+                    -1,
+                    dtype=torch.long,
+                    device=device,
+                )
+                row_lookup[active_key] = torch.arange(
+                    num_voxels, dtype=torch.long, device=device
+                )
+                point_rows = row_lookup[point_key]
+                admitted = point_rows >= 0
+                rows = point_rows[admitted]
             overflow_mask = ~admitted
             overflow_points = int(overflow_mask.sum().item())
             overflow_pillars = int(torch.unique(point_key[overflow_mask]).numel())
-            rows = permutation[safe_positions[admitted]]
             admitted_bins = bins[admitted]
             admitted_intensity = roi_points[admitted, 4].float()
             segment_key = rows * self.num_bins + admitted_bins
 
             if segment_key.numel():
+                flat_count = count_hist.view(-1)
+                flat_sum = torch.zeros(
+                    num_voxels * self.num_bins,
+                    dtype=torch.float32,
+                    device=device,
+                )
                 sorted_segment, segment_permutation = torch.sort(
                     segment_key, stable=True
                 )
@@ -339,12 +362,6 @@ class PillarHistVFE(VFETemplate):
                 )
                 segment_sums = torch.segment_reduce(
                     sorted_intensity, reduce='sum', lengths=segment_counts
-                )
-                flat_count = count_hist.view(-1)
-                flat_sum = torch.zeros(
-                    num_voxels * self.num_bins,
-                    dtype=torch.float32,
-                    device=device,
                 )
                 flat_count[unique_segment] = segment_counts.to(torch.int32)
                 flat_sum[unique_segment] = segment_sums.float()
