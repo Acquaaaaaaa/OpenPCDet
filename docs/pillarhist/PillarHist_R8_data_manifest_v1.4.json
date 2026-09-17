@@ -1,0 +1,78 @@
+{
+  "schema_version": "pillarhist-r8-data-manifest-v1.4",
+  "created_utc": "2026-09-17T17:40:00Z",
+  "kitti_root": "/home/ksyang/OpenPCDet/data/kitti",
+  "split": {
+    "train": {
+      "path": "data/kitti/ImageSets/train.txt",
+      "entries": 3712,
+      "sha256": "b6417a1d9b18c8fdb085128e633d28ff321b7674a6d1b3841b8f43d865b281cb"
+    },
+    "validation": {
+      "path": "data/kitti/ImageSets/val.txt",
+      "entries": 3769,
+      "sha256": "657ac4bcc1e156e5b106a4ca18e1f88e012787ea1d2b5d0adeea97fee903fa86"
+    }
+  },
+  "info_files": {
+    "train": {
+      "path": "data/kitti/kitti_infos_train.pkl",
+      "entries": 3712,
+      "sha256": "e330b8d865ea4c7d89e15e9ef8d75f06d0dfabd668ac89081847dd720050da34"
+    },
+    "validation": {
+      "path": "data/kitti/kitti_infos_val.pkl",
+      "entries": 3769,
+      "sha256": "317cd48d85ff8accd43aa56fd9556472b23a2e93c7cba8166694acb64a719f81"
+    }
+  },
+  "gt_database": {
+    "path": "data/kitti/kitti_dbinfos_train.pkl",
+    "sha256": "f589bcc77c52e7f6a88215e76f997bbc5f637ec98ec647f9e214e9f6320a9d1e",
+    "total_objects": 19700,
+    "objects_by_class": {
+      "Pedestrian": 2207,
+      "Car": 14357,
+      "Cyclist": 734,
+      "Van": 1297,
+      "Truck": 488,
+      "Tram": 224,
+      "Misc": 337,
+      "Person_sitting": 56
+    }
+  },
+  "classes": ["Car", "Pedestrian", "Cyclist"],
+  "evaluation": "KITTI 3D AP_R40 with the frozen OpenPCDet KITTI evaluator and configured standard class IoU thresholds",
+  "sample_file_sha256": {
+    "train:000000": {
+      "velodyne": "0e09c85e3f6078ecbdd1e706ee9624519f1bd29417437167a9ed7fbe6f54b4b1",
+      "label_2": "6627ff300809ccdb8f0402c1003b7c691a64e3027ceaf0ce7cabfeef9809d0c3",
+      "calib": "29b89ca9fa49b2cad778bf73910ff7210c7998badae39796cf29666081992d7f"
+    },
+    "train:000003": {
+      "velodyne": "43ccebf6281fe26f8a4509b9cc98311ba02828ab2718e6b7679fa6558652362f",
+      "label_2": "56f275a7b3464992db4bb524ee84cc09fb4ca621b6e63e281f6defa0a79b2651",
+      "calib": "5813c05a89e33e67244891c62e153e0a572692d42365b8665e38cc242c7d4918"
+    },
+    "train:000007": {
+      "velodyne": "91dbcd9225fa834d52f442871346e8b08938eb758106e8c1f18f8904351b92c4",
+      "label_2": "fedd52f3441728af4d1255d236aef649bcb3dbfd3859cc145fcd1fd22299d1d9",
+      "calib": "5813c05a89e33e67244891c62e153e0a572692d42365b8665e38cc242c7d4918"
+    },
+    "validation:000001": {
+      "velodyne": "59a02fdaaab3b7e903713cb618e8f53efcaf71c144436ddfcdf4f28bdbd73d20",
+      "label_2": "36eef20c544fb5cd648ea3144683a6f0e7a6869c94c1347cb7e6997e0253aefd",
+      "calib": "5813c05a89e33e67244891c62e153e0a572692d42365b8665e38cc242c7d4918"
+    },
+    "validation:000002": {
+      "velodyne": "8bffebb1a97e4c5a13083a84934d68030e6c137f86a4e43d45698ba1f8106c43",
+      "label_2": "6c9295ac0a8dbf9d018db0a5e47a217d21d77b764819fda8c91052a3ae414c11",
+      "calib": "5813c05a89e33e67244891c62e153e0a572692d42365b8665e38cc242c7d4918"
+    },
+    "validation:000004": {
+      "velodyne": "abf2115e0a0b34f75db89d7014c58edaf2873be6cd3acc3b1582ea269b881938",
+      "label_2": "6fefb725f4d61a748ab224ae425e8af5ba08b13d5e09544d4794724ad3c67bcb",
+      "calib": "5813c05a89e33e67244891c62e153e0a572692d42365b8665e38cc242c7d4918"
+    }
+  }
+}

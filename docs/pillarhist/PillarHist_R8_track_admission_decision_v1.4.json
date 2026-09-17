@@ -1,0 +1,64 @@
+{
+  "schema_version": "pillarhist-r8-track-admission-decision-v1.4",
+  "decision_utc": "2026-09-17T17:42:00Z",
+  "decision_authority": "user-authorized execution of the reviewed PillarHist_R8_closure_task_plan.md",
+  "execution_subject": "Codex in /home/ksyang/OpenPCDet",
+  "implementation_git_head": "a3b5cb73ec419e5a622581e248d152805219e7f1",
+  "git_branch": "pointpillars-pillarhist",
+  "r7": {
+    "status": "INCONCLUSIVE",
+    "tie_margin_absolute_ap": 1.0,
+    "seed666_ranking": [
+      "PH_NORM_LINEAR",
+      "PH_NORM_BNRELU",
+      "PH_RAW_LINEAR",
+      "PH_RAW_BNRELU"
+    ],
+    "seed666_scores": {
+      "PH_RAW_LINEAR": 50.356091744067406,
+      "PH_NORM_LINEAR": 51.29296388414148,
+      "PH_RAW_BNRELU": 50.21632746711825,
+      "PH_NORM_BNRELU": 51.225945272520164
+    },
+    "seed667_scores": {
+      "PH_NORM_LINEAR": 52.74882374434757,
+      "PH_NORM_BNRELU": 52.05339859537747
+    },
+    "two_seed_means": {
+      "PH_NORM_LINEAR": 52.02089381424452,
+      "PH_NORM_BNRELU": 51.63967193394882
+    },
+    "two_seed_mean_gap": 0.3812218802957048,
+    "machine_decision_sha256": "aef34cedbf4094ebff971cdd4a82e7864fec38f7e3a8e7fe150f104d967cb418",
+    "closure_report_sha256": "f80eb92f128ded7627145edc8b59e3a1665e480916ad0ed89ae2b833af7ab95f"
+  },
+  "admitted_blocking_tracks": [
+    "PP_OFFICIAL_FULL",
+    "PH_PAPER_LITERAL_FULL"
+  ],
+  "selection": {
+    "pillarhist_track": "PH_PAPER_LITERAL_FULL",
+    "vfe": "64-bin raw count + mean raw intensity + raw_meter_xy + Linear(bias=True)",
+    "basis": "paper-literal fidelity priority after an inconclusive R7 structure screen",
+    "is_r7_accuracy_winner_claim": false,
+    "raw_meter_xy_author_code_confirmed": false,
+    "interpretation_limit": "raw_meter_xy is a local implementation interpretation of the public paper description"
+  },
+  "normalized_side_track": {
+    "approved": false,
+    "blocking": false,
+    "decision_made_before_formal_r8_results": true,
+    "reason": "the 132 GPU-hour blocking main-track budget is approved; no separate normalized-track budget is approved"
+  },
+  "artifact_sha256": {
+    "PillarHist_R8_closure_task_plan.md": "3a49a37aacb490e04daed89164f1128fd73af47abebd3b2f83966e381dc9d02e",
+    "PillarHist_OpenPCDet_deployment_guideline_v1.4.md": "3889fb166b1fb858d8720aee1a501957a774534ee49e4b570984753fdc83a339",
+    "PillarHist_R8_preregistration_v1.4.json": "d9acf1329c72c50716854a54bd0817a0365b5c3e0c77aca1b4aac520a4bff0c4",
+    "PillarHist_R8_data_manifest_v1.4.json": "e309dbcad28c55ddb84c4eaff32d096c09f41a29411550a715b7e309e05c2fbb",
+    "PillarHist_R8_protocol_differences_v1.4.json": "ff92ec01df1831339dd9d1e8aee1ddcec1dcbfaa9e23371f210e8d77b7f11a8f",
+    "pointpillar.yaml": "170a9ffe76cfd8509d1044cfbcf1cbd44c5d320fda81bf0089a8d5efaf1c91c8",
+    "pointpillar_pillarhist.yaml": "0bb8f7cf0441eca5eaa587df824839103bd19e098239d246afe4a99c694c2f39"
+  },
+  "self_hash_policy": "this file does not contain its own SHA-256; document_hashes.json records it externally",
+  "formal_r8_start_authorized": true
+}

@@ -1,0 +1,178 @@
+{
+  "schema_version": "pillarhist-r8-preregistration-v1.4",
+  "status": "FROZEN_BEFORE_FORMAL_RESULTS",
+  "created_utc": "2026-09-17T17:40:00Z",
+  "scope": "KITTI full FP32 controlled reproduction; three paired seeds; no quantization or deployment claims",
+  "implementation_git_head": "a3b5cb73ec419e5a622581e248d152805219e7f1",
+  "git_branch": "pointpillars-pillarhist",
+  "r7_closure_git_head": "b448047eb8ee85ae84e83b4a5ed6b71587894bc2",
+  "r7_status": "INCONCLUSIVE",
+  "tracks": {
+    "blocking": [
+      "PP_OFFICIAL_FULL",
+      "PH_PAPER_LITERAL_FULL"
+    ],
+    "PH_PAPER_LITERAL_FULL": {
+      "num_bins": 64,
+      "count_mode": "raw",
+      "intensity_mode": "mean_raw",
+      "coord_mode": "raw_meter_xy",
+      "projection": "Linear(bias=True)",
+      "reduction_mode": "deterministic_segment"
+    },
+    "normalized_side_track": {
+      "approved": false,
+      "blocking": false,
+      "reason": "not approved within the pre-freeze compute budget"
+    }
+  },
+  "training": {
+    "device_count": 1,
+    "batch_size_per_gpu": 4,
+    "global_batch_size": 4,
+    "gradient_accumulation": 1,
+    "workers": 0,
+    "drop_last": false,
+    "train_frames": 3712,
+    "validation_frames": 3769,
+    "epochs": 80,
+    "steps_per_epoch": 928,
+    "optimizer_steps_per_run": 74240,
+    "optimizer": "OpenPCDet adam_onecycle",
+    "learning_rate": 0.003,
+    "weight_decay": 0.01,
+    "momentum": 0.9,
+    "moms": [0.95, 0.85],
+    "pct_start": 0.4,
+    "div_factor": 10,
+    "lr_warmup": false,
+    "gradient_norm_clip": 10,
+    "amp": false,
+    "grad_scaler": "disabled"
+  },
+  "numeric_and_determinism": {
+    "allow_tf32_matmul": false,
+    "allow_tf32_cudnn": false,
+    "float32_matmul_precision": "highest",
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "torch_use_deterministic_algorithms": true,
+    "cublas_workspace_config": ":4096:8"
+  },
+  "seeds": [666, 667, 668],
+  "seed_disclosure": {
+    "observed_in_r7": [666, 667],
+    "new_in_r8": [668]
+  },
+  "execution_order": {
+    "666": ["PP_OFFICIAL_FULL", "PH_PAPER_LITERAL_FULL"],
+    "667": ["PH_PAPER_LITERAL_FULL", "PP_OFFICIAL_FULL"],
+    "668": ["PP_OFFICIAL_FULL", "PH_PAPER_LITERAL_FULL"]
+  },
+  "initialization": {
+    "policy": "one canonical backend package per seed; copy shape-compatible non-VFE tensors before optimizer creation",
+    "incompatible_vfe_parameters": "initialized deterministically from the frozen seed and recorded separately"
+  },
+  "replay": {
+    "schedule_file": "replay_steps.jsonl.gz",
+    "shared_within_seed": true,
+    "per_epoch_permutation": true,
+    "per_sample_augmentation_seed": true,
+    "workers": 0,
+    "step_checksum_scope": [
+      "frame_id",
+      "points_after_augmentation",
+      "voxels",
+      "voxel_coords",
+      "voxel_num_points",
+      "gt_boxes_and_classes",
+      "lidar_aug_matrix",
+      "batch_boundary"
+    ],
+    "hash_chain": "H_k = SHA256(H_(k-1) || canonical_decimal_step_id || input_checksum_k)",
+    "expanded_batches_per_epoch": "first, last, and one seed-derived interior batch",
+    "paired_requirement": "all step checksums, every epoch root, final root, and expanded records must match"
+  },
+  "gradient_audit": {
+    "interval_optimizer_steps": 100,
+    "parameters": [
+      "vfe.projection.weight when present",
+      "first trainable rank>=2 backbone_2d parameter",
+      "dense_head.conv_cls.weight"
+    ],
+    "requirements": {
+      "present": true,
+      "finite": true,
+      "norm_strictly_greater_than_zero": true
+    },
+    "consecutive_failures_before_track_pause": 1
+  },
+  "checkpoint_and_validation": {
+    "checkpoint_interval_epochs": 10,
+    "required_retained_epochs": [20, 40, 60, 80],
+    "primary_checkpoint": "LAST_EPOCH/epoch_080",
+    "best_checkpoint_forbidden": true,
+    "formal_full_validation_epochs": [80],
+    "full_validation_frames": 3769,
+    "resume_probe_checkpoint_epoch": 10,
+    "resume_loss_rtol": 1e-5,
+    "resume_loss_atol": 1e-6,
+    "resume_model_update": "byte-exact full model checksum; no operator exceptions preregistered"
+  },
+  "metrics": {
+    "required_classes": ["Car", "Pedestrian", "Cyclist"],
+    "required_difficulties": ["easy", "moderate", "hard"],
+    "metric": "3D AP_R40",
+    "scientific_label_classes": ["Car", "Pedestrian"],
+    "numeric_source": "unrounded evaluator JSON",
+    "missing_or_nonfinite_policy": "do not generate a scientific label; execution becomes PARTIAL or BLOCKED"
+  },
+  "scientific_label_rule": {
+    "DIRECTIONALLY_SUPPORTED": "Car and Pedestrian mean paired three-difficulty deltas are both >0 and each category is positive in at least 2/3 seeds",
+    "NOT_SUPPORTED": "Car and Pedestrian mean paired three-difficulty deltas are both <=0 and each category is positive in at most 1/3 seeds",
+    "MIXED": "all other valid results",
+    "zero_is_nonpositive": true
+  },
+  "paper_comparison": {
+    "paper_protocol_mismatch": true,
+    "car_ph_paper_reported_map": 81.42,
+    "car_ph_recomputed_map": 81.41,
+    "pedestrian_ph_paper_reported_map": 51.07,
+    "pedestrian_ph_recomputed_map": 51.07666666666667,
+    "comparison_outputs": [
+      "local absolute AP minus paper AP",
+      "local paired PH minus PP delta",
+      "local relative improvement minus paper relative improvement"
+    ]
+  },
+  "resource_budget": {
+    "smoke_artifact": "outputs/pillarhist/r8/exploratory/20260918T_batch4_smoke_v5/smoke_result.json",
+    "smoke_sha256": "37b713bbbd9942d6da069960bc2af3a27791860cafe5b0c737dcc7a15e066e62",
+    "pp_steps_per_second": 1.1612223607996024,
+    "ph_steps_per_second": 1.1459038474837229,
+    "conservative_base_hours_per_run": 18.0,
+    "budget_multiplier": 1.2,
+    "budget_hours_per_run": 21.6,
+    "six_run_training_gpu_hours": 129.6,
+    "total_gpu_hours_including_validation": 132.0,
+    "budget_is_stop_line": false
+  },
+  "allowed_recovery": [
+    "power or system interruption",
+    "external transient CUDA occupancy or driver error without protocol change",
+    "temporary disk or logging failure",
+    "validation retry from an intact epoch-80 checkpoint"
+  ],
+  "formal_result_before_freeze": false,
+  "file_sha256": {
+    "PillarHist_R8_closure_task_plan.md": "3a49a37aacb490e04daed89164f1128fd73af47abebd3b2f83966e381dc9d02e",
+    "PillarHist_OpenPCDet_deployment_guideline_v1.4.md": "3889fb166b1fb858d8720aee1a501957a774534ee49e4b570984753fdc83a339",
+    "pointpillar.yaml": "170a9ffe76cfd8509d1044cfbcf1cbd44c5d320fda81bf0089a8d5efaf1c91c8",
+    "pointpillar_pillarhist.yaml": "0bb8f7cf0441eca5eaa587df824839103bd19e098239d246afe4a99c694c2f39",
+    "r8_protocol.py": "339b9f81f679c7d7b0b867decaa83c9d05b031955b168b2abec7873120063403",
+    "prepare_pillarhist_r8.py": "1264c55b60a2927c507dbf85fdef22a0e7993bf77efa361c8c005258264e0b16",
+    "run_pillarhist_r8_track.py": "9d3d220721dd00251a580b02500a8e763a147e92280a1ea92ea755b96aa39e86",
+    "audit_pillarhist_r8.py": "98061deb02fbb296b846c931c0d890752a41b4c38b7e6bd2052a508732f502d5",
+    "smoke_pillarhist_r8.py": "809655e7f8dc4bef577dc20a4c3e6836af476d0c6194751541d23e9ec720aae1"
+  }
+}

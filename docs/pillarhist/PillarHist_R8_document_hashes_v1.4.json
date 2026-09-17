@@ -1,0 +1,26 @@
+{
+  "schema_version": "pillarhist-r8-document-hashes-v1.4",
+  "created_utc": "2026-09-17T17:43:00Z",
+  "self_hash_policy": "this manifest intentionally does not contain its own hash",
+  "files": {
+    "PillarHist_R8_closure_task_plan.md": "3a49a37aacb490e04daed89164f1128fd73af47abebd3b2f83966e381dc9d02e",
+    "PillarHist_OpenPCDet_deployment_guideline_v1.4.md": "3889fb166b1fb858d8720aee1a501957a774534ee49e4b570984753fdc83a339",
+    "PillarHist_R8_preregistration_v1.4.json": "d9acf1329c72c50716854a54bd0817a0365b5c3e0c77aca1b4aac520a4bff0c4",
+    "PillarHist_R8_track_admission_decision_v1.4.json": "bad71afffe01df9ed58c636727eee5082b2052252857d1fdf2f33e248d2d1489",
+    "PillarHist_R8_data_manifest_v1.4.json": "e309dbcad28c55ddb84c4eaff32d096c09f41a29411550a715b7e309e05c2fbb",
+    "PillarHist_R8_protocol_differences_v1.4.json": "ff92ec01df1831339dd9d1e8aee1ddcec1dcbfaa9e23371f210e8d77b7f11a8f",
+    "tools/cfgs/kitti_models/pointpillar.yaml": "170a9ffe76cfd8509d1044cfbcf1cbd44c5d320fda81bf0089a8d5efaf1c91c8",
+    "tools/cfgs/kitti_models/pointpillar_pillarhist.yaml": "0bb8f7cf0441eca5eaa587df824839103bd19e098239d246afe4a99c694c2f39",
+    "tools/pillarhist/r8_protocol.py": "339b9f81f679c7d7b0b867decaa83c9d05b031955b168b2abec7873120063403",
+    "tools/pillarhist/prepare_pillarhist_r8.py": "1264c55b60a2927c507dbf85fdef22a0e7993bf77efa361c8c005258264e0b16",
+    "tools/pillarhist/run_pillarhist_r8_track.py": "9d3d220721dd00251a580b02500a8e763a147e92280a1ea92ea755b96aa39e86",
+    "tools/pillarhist/audit_pillarhist_r8.py": "98061deb02fbb296b846c931c0d890752a41b4c38b7e6bd2052a508732f502d5",
+    "tools/pillarhist/smoke_pillarhist_r8.py": "809655e7f8dc4bef577dc20a4c3e6836af476d0c6194751541d23e9ec720aae1",
+    "data/kitti/ImageSets/train.txt": "b6417a1d9b18c8fdb085128e633d28ff321b7674a6d1b3841b8f43d865b281cb",
+    "data/kitti/ImageSets/val.txt": "657ac4bcc1e156e5b106a4ca18e1f88e012787ea1d2b5d0adeea97fee903fa86",
+    "data/kitti/kitti_infos_train.pkl": "e330b8d865ea4c7d89e15e9ef8d75f06d0dfabd668ac89081847dd720050da34",
+    "data/kitti/kitti_infos_val.pkl": "317cd48d85ff8accd43aa56fd9556472b23a2e93c7cba8166694acb64a719f81",
+    "data/kitti/kitti_dbinfos_train.pkl": "f589bcc77c52e7f6a88215e76f997bbc5f637ec98ec647f9e214e9f6320a9d1e",
+    "outputs/pillarhist/r8/exploratory/20260918T_batch4_smoke_v5/smoke_result.json": "37b713bbbd9942d6da069960bc2af3a27791860cafe5b0c737dcc7a15e066e62"
+  }
+}

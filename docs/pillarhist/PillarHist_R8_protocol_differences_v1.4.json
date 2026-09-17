@@ -1,0 +1,41 @@
+{
+  "schema_version": "pillarhist-r8-protocol-differences-v1.4",
+  "paper_protocol_mismatch": true,
+  "items": {
+    "gpu": {
+      "status": "MISMATCH_OR_UNVERIFIED",
+      "local": "NVIDIA GeForce RTX 5060 Laptop GPU, 8151 MiB",
+      "paper": "not confirmed identical"
+    },
+    "batch_size": {
+      "status": "UNVERIFIED_AGAINST_PAPER",
+      "local": "single GPU, global batch 4",
+      "paper": "public descriptions are insufficient to establish exact equivalence"
+    },
+    "learning_rate": {
+      "status": "UNVERIFIED_AGAINST_PAPER",
+      "local": 0.003,
+      "paper": "not mixed silently with the local OpenPCDet official configuration"
+    },
+    "openpcdet_version": {
+      "status": "UNVERIFIED_AGAINST_PAPER",
+      "local_git_base": "25b2998 plus PillarHist commits through a3b5cb73ec419e5a622581e248d152805219e7f1",
+      "paper": "author code/version not confirmed"
+    },
+    "data_files": {
+      "status": "UNVERIFIED_AGAINST_PAPER",
+      "local": "hash-frozen KITTI train=3712, validation=3769",
+      "paper": "exact local files unavailable"
+    },
+    "pillar_center_interpretation": {
+      "status": "LOCAL_LITERAL_INTERPRETATION_NOT_AUTHOR_CODE_CONFIRMED",
+      "local": "raw_meter_xy",
+      "paper": "pillar center xy stated, normalization not uniquely specified"
+    },
+    "checkpoint_selection": {
+      "status": "LOCAL_FROZEN_RULE",
+      "local": "epoch 80 LAST_EPOCH only",
+      "paper": "exact selection rule not confirmed"
+    }
+  }
+}
