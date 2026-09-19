@@ -13,4 +13,5 @@ venv/
 *.zip
 *.bin
 output
+/outputs/
 version.py
