@@ -1,0 +1,88 @@
+{
+  "schema_version": "pillarhist-r8-seed666-decision-v1",
+  "created_utc": "2026-09-19T03:24:57.529392Z",
+  "execution_status_original_r8": "PARTIAL",
+  "seed666_admission_status": "PASS_COMPLETE",
+  "scientific_label": null,
+  "scientific_label_reason": "The frozen scientific label requires three paired seeds; seeds 667 and 668 were deferred by user scope change.",
+  "single_seed_directional_observation": "BOTH_NEGATIVE",
+  "paper_protocol_mismatch": true,
+  "active_seeds": [
+    666
+  ],
+  "deferred_seeds": [
+    667,
+    668
+  ],
+  "deferred_tracks": 4,
+  "seed666_delta_car_map": -0.43439583705841756,
+  "seed666_delta_pedestrian_map": -0.23098985479870748,
+  "seed666_delta_cyclist_map": -5.625311215163308,
+  "final_pytest": {
+    "tests": 51,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "path": "/home/ksyang/OpenPCDet/outputs/pillarhist/r8/tests/seed666_final_junit.xml",
+    "pass": true
+  },
+  "checkpoint_reload_probe": {
+    "schema_version": "pillarhist-r8-seed666-checkpoint-probe-v1",
+    "created_utc": "2026-09-19T03:19:47.776513Z",
+    "selection": {
+      "method": "deterministic random choice",
+      "selection_seed": 20260919,
+      "candidates": [
+        "PP_OFFICIAL_FULL",
+        "PH_PAPER_LITERAL_FULL"
+      ],
+      "selected_track": "PP_OFFICIAL_FULL"
+    },
+    "checkpoint": "/home/ksyang/OpenPCDet/outputs/pillarhist/r8/seed666/PP_OFFICIAL_FULL/checkpoints/last.pth",
+    "checkpoint_sha256": "b027a0e9308dffb233a6a19e338c0016de261288956af3659800dde85316245a",
+    "checkpoint_completed_epoch": 80,
+    "checkpoint_completed_optimizer_steps": 74240,
+    "loaded_model_checksum": "ca68ef8a77b5c174eb44bb10455ed4a6e57eb972dcf54a9dffa0976e04ce7a3e",
+    "expected_final_model_checksum": "ca68ef8a77b5c174eb44bb10455ed4a6e57eb972dcf54a9dffa0976e04ce7a3e",
+    "model_checksum_equal": true,
+    "validation_frame_ids": [
+      "000001",
+      "000002",
+      "000004",
+      "000005"
+    ],
+    "prediction_count": 47,
+    "outputs_finite": true,
+    "determinism": {
+      "seed": 666,
+      "amp": false,
+      "grad_scaler": "disabled",
+      "allow_tf32_matmul": false,
+      "allow_tf32_cudnn": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "deterministic_algorithms": true,
+      "float32_matmul_precision": "highest",
+      "cublas_workspace_config": ":4096:8"
+    },
+    "pass": true
+  },
+  "backup": {
+    "schema_version": "pillarhist-r8-seed666-backup-v1",
+    "archive_windows_path": "D:\\Codex\\Pillar-Make\\pillarhist_r8_backups\\pillarhist_r8_seed666_partial_20260919.tar",
+    "archive_wsl_path": "/mnt/d/Codex/Pillar-Make/pillarhist_r8_backups/pillarhist_r8_seed666_partial_20260919.tar",
+    "archive_bytes": 1551124480,
+    "sha256": "376e50c7451f51ae9369259c723a8bba96530b11c396e89e927c41a686128f49",
+    "contents": "complete outputs/pillarhist/r8 tree after seed666-only partial closure",
+    "active_seeds": [
+      666
+    ],
+    "deferred_seeds": [
+      667,
+      668
+    ],
+    "exists": true,
+    "sha256_verified": true
+  },
+  "fairness_pass": true
+}

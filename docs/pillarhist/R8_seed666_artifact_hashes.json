@@ -1,0 +1,17 @@
+{
+  "schema_version": "pillarhist-r8-seed666-artifact-hashes-v1",
+  "created_utc": "2026-09-19T03:24:57.529781Z",
+  "files": {
+    "outputs/pillarhist/r8/R8_seed666_decision.json": "cbe3f290f90597c623300096dae5d17837de0b88909e156eb91e9e5179fa429d",
+    "outputs/pillarhist/r8/R8_seed666_fairness_audit.json": "8df6ee94bffb412a0a073144341689ca92f3ea9cc4f955b8a36204e74a710a58",
+    "outputs/pillarhist/r8/R8_seed666_metrics.json": "dab88fb86856b7e7f902e41345195760a2586836505bd1ea90f2b7ac498a7ea4",
+    "outputs/pillarhist/r8/R8_seed666_paper_comparison.json": "46c45226723f1bb6f3969728f31af06bb8dbf2b740a4a7d3fddea02c7129f865",
+    "outputs/pillarhist/r8/R8_seed666_efficiency.json": "fcb5699bb10ffb5ad4f8ea48421c259c0341bd6c20e4b93814fa542363a82156",
+    "outputs/pillarhist/r8/R8_seed666_partial_closure_report.md": "57d4c5cda45fbb8220ad611bdd7285bf7abe2a7e8131fbe8c9d706e95346d88f",
+    "outputs/pillarhist/r8/seed666/pair_admission.json": "6b4f11abae93fdadaf6d259d2f781ce6d0b6855486d9eb079ff24138db174d62",
+    "outputs/pillarhist/r8/seed666/final_checkpoint_reload_probe.json": "62117445847e2b7d5bffbb5f8144bcc9e46d1c346f81d464e538256003ea250f",
+    "outputs/pillarhist/r8/R8_seed666_backup_manifest.json": "a472ef551d212b9f4c7f2939b968b9c375ec141a3839d6dd36fe4371f614838b",
+    "outputs/pillarhist/r8/seed666/PP_OFFICIAL_FULL/checkpoints/last.pth": "b027a0e9308dffb233a6a19e338c0016de261288956af3659800dde85316245a",
+    "outputs/pillarhist/r8/seed666/PH_PAPER_LITERAL_FULL/checkpoints/last.pth": "22b9170a924455bf747644bcb1bbc942509a25502eb9ec983bc78348cd78c05c"
+  }
+}

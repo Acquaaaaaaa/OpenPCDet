@@ -1,0 +1,10 @@
+{
+  "schema_version": "pillarhist-r8-seed666-backup-v1",
+  "archive_windows_path": "D:\\Codex\\Pillar-Make\\pillarhist_r8_backups\\pillarhist_r8_seed666_partial_20260919.tar",
+  "archive_wsl_path": "/mnt/d/Codex/Pillar-Make/pillarhist_r8_backups/pillarhist_r8_seed666_partial_20260919.tar",
+  "archive_bytes": 1551124480,
+  "sha256": "376e50c7451f51ae9369259c723a8bba96530b11c396e89e927c41a686128f49",
+  "contents": "complete outputs/pillarhist/r8 tree after seed666-only partial closure",
+  "active_seeds": [666],
+  "deferred_seeds": [667, 668]
+}

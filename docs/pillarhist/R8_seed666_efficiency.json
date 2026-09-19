@@ -1,0 +1,22 @@
+{
+  "schema_version": "pillarhist-r8-seed666-efficiency-v1",
+  "scope": "current-hardware FP32 engineering record; not deployment evidence",
+  "runs": {
+    "PP_OFFICIAL_FULL": {
+      "training_wall_seconds": 60381.15845346451,
+      "optimizer_steps": 74240,
+      "optimizer_steps_per_second": 1.2295226176757843,
+      "peak_allocated_bytes": 4101881856,
+      "peak_reserved_bytes": 5679087616,
+      "checkpoint_bytes": 58274379
+    },
+    "PH_PAPER_LITERAL_FULL": {
+      "training_wall_seconds": 59427.03943037987,
+      "optimizer_steps": 74240,
+      "optimizer_steps_per_second": 1.2492629737507597,
+      "peak_allocated_bytes": 3514257408,
+      "peak_reserved_bytes": 4424990720,
+      "checkpoint_bytes": 58363211
+    }
+  }
+}

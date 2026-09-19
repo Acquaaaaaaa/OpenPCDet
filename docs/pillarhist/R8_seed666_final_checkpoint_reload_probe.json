@@ -1,0 +1,41 @@
+{
+  "schema_version": "pillarhist-r8-seed666-checkpoint-probe-v1",
+  "created_utc": "2026-09-19T03:19:47.776513Z",
+  "selection": {
+    "method": "deterministic random choice",
+    "selection_seed": 20260919,
+    "candidates": [
+      "PP_OFFICIAL_FULL",
+      "PH_PAPER_LITERAL_FULL"
+    ],
+    "selected_track": "PP_OFFICIAL_FULL"
+  },
+  "checkpoint": "/home/ksyang/OpenPCDet/outputs/pillarhist/r8/seed666/PP_OFFICIAL_FULL/checkpoints/last.pth",
+  "checkpoint_sha256": "b027a0e9308dffb233a6a19e338c0016de261288956af3659800dde85316245a",
+  "checkpoint_completed_epoch": 80,
+  "checkpoint_completed_optimizer_steps": 74240,
+  "loaded_model_checksum": "ca68ef8a77b5c174eb44bb10455ed4a6e57eb972dcf54a9dffa0976e04ce7a3e",
+  "expected_final_model_checksum": "ca68ef8a77b5c174eb44bb10455ed4a6e57eb972dcf54a9dffa0976e04ce7a3e",
+  "model_checksum_equal": true,
+  "validation_frame_ids": [
+    "000001",
+    "000002",
+    "000004",
+    "000005"
+  ],
+  "prediction_count": 47,
+  "outputs_finite": true,
+  "determinism": {
+    "seed": 666,
+    "amp": false,
+    "grad_scaler": "disabled",
+    "allow_tf32_matmul": false,
+    "allow_tf32_cudnn": false,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "deterministic_algorithms": true,
+    "float32_matmul_precision": "highest",
+    "cublas_workspace_config": ":4096:8"
+  },
+  "pass": true
+}

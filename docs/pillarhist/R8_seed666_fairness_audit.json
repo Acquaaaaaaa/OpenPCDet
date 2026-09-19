@@ -1,0 +1,29 @@
+{
+  "schema_version": "pillarhist-r8-seed666-fairness-v1",
+  "created_utc": "2026-09-19T03:24:40.424456Z",
+  "scope": {
+    "active_seeds": [
+      666
+    ],
+    "deferred_seeds": [
+      667,
+      668
+    ]
+  },
+  "tracks_valid": true,
+  "full_input_checksum_sequences": {
+    "pass": true,
+    "compared_steps": 74240,
+    "left_steps": 74240,
+    "right_steps": 74240,
+    "reason": null
+  },
+  "expanded_audit_samples": {
+    "pass": true,
+    "left_samples": 240,
+    "right_samples": 240
+  },
+  "epoch_and_final_hash_roots_equal": true,
+  "final_root": "21f1775d89d9d128aeed496526a1183ca0231e16228b3d615e6438ff4877e645",
+  "pass": true
+}

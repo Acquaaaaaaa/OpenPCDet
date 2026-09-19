@@ -1,0 +1,8 @@
+{
+  "active_seeds": [666],
+  "active_tracks": ["PP_OFFICIAL_FULL", "PH_PAPER_LITERAL_FULL"],
+  "deferred_seeds": [667, 668],
+  "deferred_track_count": 4,
+  "reason": "User requested a seed-666-only execution scope due to time constraints",
+  "final_summary_required": true
+}

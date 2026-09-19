@@ -1,0 +1,77 @@
+{
+  "schema_version": "pillarhist-r8-seed666-paper-comparison-v1",
+  "paper_protocol_mismatch": true,
+  "numeric_source": "unrounded evaluator JSON",
+  "paper_values": {
+    "PointPillars": {
+      "Car": {
+        "easy": 87.08,
+        "moderate": 77.9,
+        "hard": 74.97,
+        "paper_reported_map": 79.98,
+        "recomputed_from_displayed_ap": 79.98333333333333
+      },
+      "Pedestrian": {
+        "easy": 54.71,
+        "moderate": 49.01,
+        "hard": 44.52,
+        "paper_reported_map": 49.41,
+        "recomputed_from_displayed_ap": 49.413333333333334
+      }
+    },
+    "PH-PointPillars": {
+      "Car": {
+        "easy": 88.8,
+        "moderate": 79.13,
+        "hard": 76.3,
+        "paper_reported_map": 81.42,
+        "recomputed_from_displayed_ap": 81.41000000000001
+      },
+      "Pedestrian": {
+        "easy": 57.45,
+        "moderate": 50.42,
+        "hard": 45.36,
+        "paper_reported_map": 51.07,
+        "recomputed_from_displayed_ap": 51.076666666666675
+      }
+    }
+  },
+  "absolute_map_comparison": {
+    "PointPillars": {
+      "Car": {
+        "local_seed666": 80.28860985856083,
+        "paper_reported_map": 79.98,
+        "local_minus_paper": 0.30860985856082834
+      },
+      "Pedestrian": {
+        "local_seed666": 51.06723833004099,
+        "paper_reported_map": 49.41,
+        "local_minus_paper": 1.6572383300409967
+      }
+    },
+    "PH-PointPillars": {
+      "Car": {
+        "local_seed666": 79.85421402150241,
+        "paper_reported_map": 81.42,
+        "local_minus_paper": -1.565785978497587
+      },
+      "Pedestrian": {
+        "local_seed666": 50.836248475242286,
+        "paper_reported_map": 51.07,
+        "local_minus_paper": -0.23375152475771444
+      }
+    }
+  },
+  "direction_comparison": {
+    "Car": {
+      "paper_recomputed_delta": 1.4266666666666765,
+      "local_seed666_delta": -0.43439583705841756,
+      "same_direction": false
+    },
+    "Pedestrian": {
+      "paper_recomputed_delta": 1.663333333333341,
+      "local_seed666_delta": -0.23098985479870748,
+      "same_direction": false
+    }
+  }
+}

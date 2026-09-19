@@ -1,0 +1,49 @@
+{
+  "seed": 666,
+  "pass": true,
+  "paired_training_log_steps": 74240,
+  "paired_expanded_replay_samples": 240,
+  "final_root": "21f1775d89d9d128aeed496526a1183ca0231e16228b3d615e6438ff4877e645",
+  "validation": {
+    "PP_OFFICIAL_FULL": {
+      "Car": {
+        "easy": 87.63228047847778,
+        "moderate": 78.10001489973854,
+        "hard": 75.13353419746616,
+        "mean_easy_moderate_hard": 80.28860985856083
+      },
+      "Pedestrian": {
+        "easy": 56.40545464133575,
+        "moderate": 50.725626420859335,
+        "hard": 46.07063392792788,
+        "mean_easy_moderate_hard": 51.06723833004099
+      },
+      "Cyclist": {
+        "easy": 82.67420701494281,
+        "moderate": 64.86687413328309,
+        "hard": 61.38713301674426,
+        "mean_easy_moderate_hard": 69.64273805499005
+      }
+    },
+    "PH_PAPER_LITERAL_FULL": {
+      "Car": {
+        "easy": 87.08803587627408,
+        "moderate": 77.694376534709,
+        "hard": 74.78022965352416,
+        "mean_easy_moderate_hard": 79.85421402150241
+      },
+      "Pedestrian": {
+        "easy": 56.76078907992682,
+        "moderate": 50.353625586145135,
+        "hard": 45.39433075965489,
+        "mean_easy_moderate_hard": 50.836248475242286
+      },
+      "Cyclist": {
+        "easy": 77.82396374600977,
+        "moderate": 58.80443757362788,
+        "hard": 55.423879199842595,
+        "mean_easy_moderate_hard": 64.01742683982674
+      }
+    }
+  }
+}
