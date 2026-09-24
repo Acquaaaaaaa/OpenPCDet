@@ -1,0 +1,49 @@
+experiment:
+  name: pp_epoch80_a4_v02
+  seed: 666
+  conclusion_scope: fp32_reference_offline_quantized_int8
+
+model:
+  config: tools/cfgs/kitti_models/pointpillar.yaml
+  checkpoint: /home/ksyang/OpenPCDet/output/kitti_models/pointpillar/full_80ep_bs2_seed666_run001/ckpt/checkpoint_epoch_80.pth
+  expected_consumer_count: 23
+  expected_unique_activation_count: 19
+
+data:
+  dataset_root: data/kitti
+  calibration_manifest: tools/booth_a4/manifests/kitti_train_calib_256.txt
+  pilot_manifest: tools/booth_a4/manifests/kitti_val_pilot_256.txt
+  full_validation_manifest: tools/booth_a4/manifests/kitti_val_full_3769.txt
+  batch_size: 1
+  workers: 0
+  training: false
+  shuffle: false
+
+quantization:
+  dtype: signed_int8
+  qmin: -128
+  qmax: 127
+  zero_point: 0
+  granularity: per_unique_activation_edge_per_tensor
+  rounding: nearest_even
+  scale_denominator: 127
+  methods: [minmax, p99_99, p99_9]
+  percentile_population: includes_zeros
+  percentile_sample_algorithm: deterministic_stratified_per_call_v1
+  percentile_sample_cap_per_activation: 1000000
+  percentile_interpolation: linear
+  percentile_compute_dtype: float64
+
+booth:
+  recoding: modified_radix4
+  digits: [d0, d1, d2, d3]
+  a4_predicate: d2_eq_0_and_d3_eq_0
+  oracle_q_range: [-8, 7]
+
+statistics:
+  primary_metric: RA4_tensor_micro
+  primary_scale_method: minmax
+  include_logical_tensor_zeros: true
+  exclude_convolution_boundary_padding: true
+  per_frame_macro: true
+  mac_weighted_metric: not_implemented

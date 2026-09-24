@@ -1,0 +1,60 @@
+experiment:
+  name: pp_epoch80_group_cycle_v01
+  conclusion_scope: fp32_reference_frozen_scale_offline_int8
+
+model:
+  config: tools/cfgs/kitti_models/pointpillar.yaml
+  checkpoint: /home/ksyang/OpenPCDet/output/kitti_models/pointpillar/full_80ep_bs2_seed666_run001/ckpt/checkpoint_epoch_80.pth
+  expected_consumer_count: 23
+  expected_unique_activation_count: 19
+
+data:
+  full_validation_manifest: tools/booth_a4/manifests/kitti_val_full_3769.txt
+  calibration_scales: output/booth_a4/pp_epoch80_a4_v02_20260920_1740/calibration/calibration_scales.json
+  batch_size: 1
+  workers: 0
+  chunk_streams: 16384
+
+quantization:
+  source: fp32_reference_activation
+  mapping: frozen_scale_offline_int8
+  scale_methods: [minmax, p99_99, p99_9]
+  full_run_scale_methods: [minmax]
+  sensitivity_sample_scale_methods: [minmax, p99_99, p99_9]
+
+execution:
+  full_run_metrics_mode: core
+  sensitivity_sample_metrics_mode: full
+
+main_path:
+  mapping_mode: consumer_aware_reference_cim
+  logical_contiguous_sensitivity: true
+  group_size: 8
+  padding_policy: physical_rows_included
+  pfn_token_policy: fixed_slots_included
+  tail_policy: zero_pad_to_physical_rows
+  conv_transpose_mapping: direct_scatter
+  conv_transpose_zero_insertion_scope: pilot_only
+  output_parallelism: 32
+
+correction:
+  primary_datapath: vector_tile
+  vector_item_lanes: 8
+  vector_item_semantics: one_activation_digit_applied_to_one_complete_output_tile
+  vector_output_parallelism: 32
+  scalar_ops_per_cycle: 8
+  equal_resource_scalar_ops: vector_item_lanes_times_vector_output_parallelism
+  output_tile_cross_packing: false
+  schedule_domain: layer_frame
+  window_sensitivity: [8, 32, 128]
+  plane_queue: mixed
+  item_mode: nonzero_digit
+  timing: serial
+  digit_cost:
+    abs_1: 1
+    abs_2: 1
+
+reporting:
+  primary_cycle_scope: normalized_one_output_tile
+  full_layer_cycles_require_output_parallelism: true
+  do_not_claim_end_to_end_latency: true
